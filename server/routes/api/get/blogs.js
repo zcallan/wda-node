@@ -2,9 +2,6 @@
 let mongoose = require( 'mongoose' );
 let Blogs = require( '../../../models/blogs');
 
-function createBlog() {
-
-}
 
 module.exports = function( req, res ) {
   Blogs.find( {}, ( err, result ) => {

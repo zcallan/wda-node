@@ -14,7 +14,6 @@ export default function App( { children } ) {
         </Navbar.Header>
         <Nav>
           <NavItem componentClass={Link} href="/" to="/">Home</NavItem>
-          <NavItem componentClass={Link} href="movies" to="movies">Movies</NavItem>
           <NavItem componentClass={Link} href="blogs" to="blogs">Blogs</NavItem>
           <NavItem componentClass={Link} href="about" to="about">About</NavItem>
         </Nav>
@@ -29,3 +28,11 @@ export default function App( { children } ) {
 App.propTypes = {
   children: React.PropTypes.object,
 };
+
+/* TODO
+
+Loading spinners
+Login admin/user
+Add shit
+
+ */

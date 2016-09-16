@@ -5,7 +5,6 @@ import { fetchMovies } from '../actions/movieActions';
 
 
 function mapStateToProps( state ) {
-  console.log( state );
   return {
     movies: state.promiseMovies.movies,
     error: state.promiseMovies.error,

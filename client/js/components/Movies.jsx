@@ -1,4 +1,6 @@
+import '../../scss/movieCard.scss';
 import React, { Component } from 'react';
+import MovieCard from './MovieCard.jsx';
 
 
 class Movies extends Component {
@@ -16,20 +18,18 @@ class Movies extends Component {
 
     return this.props.movies.map( movie => {
       return (
-        <div key={movie._id}>
-          <p>Title: {movie.title}</p>
-          <p>Rating: {movie.rating} / 10</p>
-          <hr />
-        </div>
+        <MovieCard
+          key={movie._id}
+          title={movie.title}
+          rating={movie.rating}
+        />
       );
     });
   }
 
   render() {
     return (
-      <div>
-        <h1>Movies</h1>
-        <hr />
+      <div className="movie-card-container">
         {this.renderMovies()}
       </div>
     );
