@@ -8,6 +8,7 @@ import App from './components/App.jsx';
 import About from './components/About.jsx';
 import Blogs from './containers/blogContainer';
 import Home from './components/Home.jsx';
+import AddMovie from './components/AddMovie.jsx';
 import store from './store';
 
 
@@ -18,6 +19,7 @@ ReactDOM.render(
         <IndexRoute component={Home} />
         <Route path="about" component={About} />
         <Route path="blogs" component={Blogs} />
+        <Route path="add-movie" component={AddMovie} />
       </Route>
     </Router>
   </Provider>,

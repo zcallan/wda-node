@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
 import { Field, Form } from 'react-redux-form';
 
 
 class FormAddMovie extends Component {
   handleSubmit( movie ) {
+    /* POST data to database. */
     this.props.addMovie( movie );
+    /* Redirect to home page. */
+    this.context.router.push( '/' );
   }
 
   render() {
@@ -33,5 +35,9 @@ class FormAddMovie extends Component {
     );
   }
 }
+
+FormAddMovie.contextTypes = {
+  router: React.PropTypes.object,
+};
 
 export default FormAddMovie;
