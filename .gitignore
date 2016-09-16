@@ -1,0 +1,10 @@
+node_modules/
+.DS_Store
+npm-debug.log
+build/js/
+build/*.woff2
+build/*.svg
+build/*.ttf
+build/*.eot
+build/*.woff
+.idea/
