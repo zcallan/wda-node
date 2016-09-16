@@ -1,0 +1,17 @@
+[
+  {
+    "method": "post",
+    "path": "/api/authenticate",
+    "controller": "./routes/api/post/authenticate.js"
+  },
+  {
+    "method": "post",
+    "path": "/api/movies",
+    "controller": "./routes/api/post/movies.js"
+  },
+  {
+    "method": "get",
+    "path": "/api/movies",
+    "controller": "./routes/api/get/movies.js"
+  }
+]

@@ -13,6 +13,7 @@ export default function blogs( state = initialState, action ) {
         ...state,
         fetching: true,
         fetched: false,
+        error: false,
       };
 
     case 'FETCH_BLOGS_FULFILLED':
@@ -20,6 +21,7 @@ export default function blogs( state = initialState, action ) {
         ...state,
         fetching: false,
         fetched: true,
+        error: false,
         blogs: action.payload.data,
       };
 

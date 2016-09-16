@@ -13,6 +13,7 @@ export default function movies( state = initialState, action ) {
         ...state,
         fetching: true,
         fetched: false,
+        error: false,
       };
 
     case 'FETCH_MOVIES_FULFILLED':
@@ -20,6 +21,7 @@ export default function movies( state = initialState, action ) {
         ...state,
         fetching: false,
         fetched: true,
+        error: false,
         movies: action.payload.data,
       };
 
