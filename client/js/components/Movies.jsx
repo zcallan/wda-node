@@ -1,6 +1,7 @@
 import '../../scss/movieCard.scss';
 import React, { Component } from 'react';
 import MovieCard from './MovieCard.jsx';
+import FormAddMovie from '../containers/formAddMovieContainer';
 
 
 class Movies extends Component {
@@ -29,8 +30,11 @@ class Movies extends Component {
 
   render() {
     return (
-      <div className="movie-card-container">
-        {this.renderMovies()}
+      <div>
+        <div className="movie-card-container">
+          {this.renderMovies()}
+        </div>
+        <FormAddMovie />
       </div>
     );
   }

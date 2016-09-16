@@ -33,6 +33,31 @@ export default function movies( state = initialState, action ) {
         error: action.payload,
       };
 
+    case 'ADD_MOVIE_PENDING':
+      return {
+        ...state,
+        fetching: true,
+        fetched: false,
+        error: false,
+      };
+
+    case 'ADD_MOVIE_FULFILLED':
+      return {
+        ...state,
+        fetching: false,
+        fetched: true,
+        error: false,
+        addedMovie: action.payload.data,
+      };
+
+    case 'ADD_MOVIE_REJECTED':
+      return {
+        ...state,
+        fetching: false,
+        fetched: false,
+        error: action.payload,
+      };
+
     default:
       return state;
   }
