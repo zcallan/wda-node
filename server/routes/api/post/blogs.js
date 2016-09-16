@@ -1,15 +1,15 @@
 'use strict';
-let Movies = require( '../../../models/movies');
+let Blogs = require( '../../../models/blogs');
 
 
 module.exports = function( req, res, next ) {
-  Movies.create( req.body, ( err, result ) => {
+  Blogs.create( req.body, ( err, result ) => {
     if ( err ) {
       console.log( err.message );
       res.send( err.message );
       return next();
     }
-    console.log( 'Created movie!' );
+    console.log( 'Created blog!' );
     res.send( result );
   });
 };

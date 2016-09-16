@@ -1,9 +1,13 @@
 'use strict';
 let mongoose = require( 'mongoose' );
-let Movies = require( '../../../models/movies');
+let Blogs = require( '../../../models/blogs');
+
+function createBlog() {
+
+}
 
 module.exports = function( req, res ) {
-  Movies.find( {}, ( err, result ) => {
+  Blogs.find( {}, ( err, result ) => {
     if ( err ) throw err;
     res.send( result );
   });

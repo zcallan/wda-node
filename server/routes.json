@@ -10,8 +10,18 @@
     "controller": "./routes/api/post/movies.js"
   },
   {
+    "method": "post",
+    "path": "/api/blogs",
+    "controller": "./routes/api/post/blogs.js"
+  },
+  {
     "method": "get",
     "path": "/api/movies",
     "controller": "./routes/api/get/movies.js"
+  },
+  {
+    "method": "get",
+    "path": "/api/blogs",
+    "controller": "./routes/api/get/blogs.js"
   }
 ]

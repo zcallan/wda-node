@@ -22,7 +22,6 @@ routes.map( route => {
   app[route.method]( route.path, require( route.controller ) );
 });
 
-//
 // apiRoutes.use( ( req, res, next ) => {
 //   /* Search for tokens to authenticate user. */
 //   var token = req.body.token || req.query.token || req.headers['x-access-token'];
@@ -58,40 +57,6 @@ routes.map( route => {
 // });
 //
 // app.use('/api', apiRoutes);
-
-
-/*
-
-
-app.post( '/api/movies', ( req, res ) => {
-  db.collection( 'movies' ).save( req.body, ( err, result ) => {
-    if ( err ) return console.log( err );
-
-    console.log( 'Successfully saved to database!' );
-    res.redirect( '/' );
-  });
-});
-
-app.post( '/api/blogs', ( req, res ) => {
-  db.collection( 'blogs' ).save( req.body, ( err, result ) => {
-    if ( err ) return console.log( err );
-
-    console.log( 'Successfully saved to database!' );
-    res.redirect( '/' );
-  });
-});
-
-app.get( '/api/movies', ( req, res ) => {
-  db.collection( 'movies' ).find().toArray( ( err, results ) => {
-    res.send( results );
-  });
-});
-
-app.get( '/api/blogs', ( req, res ) => {
-  db.collection( 'blogs' ).find().toArray( ( err, results ) => {
-    res.send( results );
-  });
-});*/
 
 mongoose.connect( config.database, () => {
   console.log( '=> Started MongoDB.' );
