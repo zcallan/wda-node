@@ -1,4 +1,4 @@
-import '../../scss/movieCard.scss';
+import '../../scss/movie-card.scss';
 import React, { Component } from 'react';
 import MovieCard from './MovieCard.jsx';
 
@@ -22,6 +22,7 @@ class Movies extends Component {
           key={movie._id}
           title={movie.title}
           rating={movie.rating}
+          posterUrl={movie.posterUrl}
         />
       );
     });

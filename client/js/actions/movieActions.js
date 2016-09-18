@@ -8,7 +8,7 @@ export const fetchMovies = createAction( 'FETCH_MOVIES', () => {
   };
 });
 
-export const addMovie = createAction( 'ADD_MOVIE', ( movie ) => {
+export const addMovie = createAction( 'ADD_MOVIE', movie => {
   return {
     promise: postMovie( movie ),
   };

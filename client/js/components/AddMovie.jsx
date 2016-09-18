@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { PageHeader } from 'react-bootstrap';
-import FormAddMovie from '../containers/formAddMovieContainer';
+import SimpleForm from '../components/forms/SimpleForm.jsx';
 
 
 class AddMovie extends Component {
@@ -8,7 +8,7 @@ class AddMovie extends Component {
     return (
       <div>
         <PageHeader>Add Movie</PageHeader>
-        <FormAddMovie />
+        <SimpleForm />
       </div>
     );
   }

@@ -11,4 +11,8 @@ module.exports = mongoose.model( 'Movies', new Schema({
     type: Number,
     required: [ true, 'Movie rating required!' ],
   },
+  posterUrl: {
+    type: String,
+    required: [ true, 'Movie poster URL required!' ],
+  },
 }));
