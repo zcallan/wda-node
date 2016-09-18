@@ -21,6 +21,11 @@
   },
   {
     "method": "get",
+    "path": "/api/movies/:movieId",
+    "controller": "./routes/api/get/movies.js"
+  },
+  {
+    "method": "get",
     "path": "/api/blogs",
     "controller": "./routes/api/get/blogs.js"
   }

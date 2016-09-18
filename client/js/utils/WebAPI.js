@@ -4,8 +4,9 @@ export function getBlogs() {
   return axios.get( 'http://localhost:3001/api/blogs' );
 }
 
-export function getMovies() {
-  return axios.get( 'http://localhost:3001/api/movies' );
+export function getMovies( movie ) {
+  let movieId = ( movie ) ? `/${movie}` : '';
+  return axios.get( 'http://localhost:3001/api/movies' + movieId );
 }
 
 export function postMovie( movie ) {

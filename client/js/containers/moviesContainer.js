@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Movie from '../components/Movie.jsx';
+import Movies from '../components/Movies.jsx';
 import { fetchMovies } from '../actions/movieActions';
 
 
@@ -17,4 +17,4 @@ function mapDispatchToProps( dispatch ) {
   return bindActionCreators( { fetchMovies }, dispatch );
 }
 
-export default connect( mapStateToProps, mapDispatchToProps )( Movie );
+export default connect( mapStateToProps, mapDispatchToProps )( Movies );

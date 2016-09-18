@@ -1,39 +1,51 @@
 import React, { Component } from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field, Form } from 'react-redux-form';
 import { Button } from 'react-bootstrap';
 
-
 class FormAddMovie extends Component {
-  handleSubmit() {
-    console.log( 'submit' );
+  handleSubmit( movie ) {
+    /* POST data to database. */
+    this.props.addMovie( movie );
+    /* Redirect to home page. */
+    this.context.router.push( '/' );
   }
 
   render() {
+    let { movie } = this.props;
+
     return (
-      <form onSubmit={this.handleSubmit}>
-        <div>
+      <Form
+        model="movie"
+        onSubmit={( movie ) => this.handleSubmit( movie )}
+      >
+        <Field model="movie.title">
           <label>Title</label>
-          <Field name="title" component="input" type="text" />
-        </div>
+          <input type="text" />
+        </Field>
 
-        <div>
+        <Field model="movie.rating">
           <label>Rating</label>
-          <Field name="rating" component="input" type="text" />
-        </div>
+          <input type="text" />
+        </Field>
 
-        <div>
-          <label>Actors</label>
-          <Field name="actors" component="input" type="text" />
-        </div>
+        <Field model="movie.posterUrl">
+          <label>Poster URL</label>
+          <input type="text" />
+        </Field>
 
-        <Button type="submit">Add Movie</Button>
-      </form>
+        <Button
+          type="submit"
+          bsStyle="success"
+        >
+          Add { movie.title }
+        </Button>
+      </Form>
     );
   }
 }
 
-FormAddMovie = reduxForm({
-  form: 'movie' // a unique name for this form
-})( FormAddMovie );
+FormAddMovie.contextTypes = {
+  router: React.PropTypes.object,
+};
 
 export default FormAddMovie;

@@ -1,61 +1,62 @@
-.movie-card-container {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
+.movie-card {
+  border: 1px solid #ddd;
+  width: 200px;
+  height: 300px;
+  margin: 10px;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
 
-  .movie-card {
-    border: 1px solid #ddd;
-    width: 200px;
-    height: 300px;
-    margin: 10px;
-    position: relative;
-
-    &:hover .movie-card-label {
-      display: flex;
-    }
-
-    &:hover .movie-card-backdrop {
+  &:hover {
+    .movie-card-backdrop {
       opacity: 0.5;
     }
 
-    .movie-card-backdrop {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -1;
-      background-color: #000;
-      opacity: 0;
-      transition: opacity .5s ease;
-    }
-
-    .movie-card-image {
-      width: 100%;
-      height: 100%;
-      z-index: -10;
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-
-      img {
-        height: inherit;
-        width: inherit;
-      }
-    }
-
     .movie-card-label {
-      width: 100%;
-      height: 100%;
-      z-index: 10;
-      display: none;
-      justify-content: center;
-      align-items: center;
-      flex-flow: column wrap;
-      color: white;
-      font-weight: bold;
-      font-size: 16px;
+      opacity: 1;
     }
+  }
+
+  .movie-card-backdrop {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-color: #000;
+    opacity: 0;
+    transition: opacity .5s ease;
+  }
+
+  .movie-card-image {
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    img {
+      height: inherit;
+      width: inherit;
+    }
+  }
+
+  .movie-card-label {
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column wrap;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    transition: opacity .2s ease;
   }
 }

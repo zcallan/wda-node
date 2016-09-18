@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { PageHeader, Button } from 'react-bootstrap';
 import { Link } from 'react-router';
-import Movies from '../containers/movieContainer';
+import Movies from '../containers/moviesContainer';
 
 
 class Home extends Component {

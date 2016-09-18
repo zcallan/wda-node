@@ -1,14 +1,14 @@
-import '../../scss/movies.scss';
 import React, { Component } from 'react';
 import MovieCard from './MovieCard.jsx';
 
 
-class Movies extends Component {
+class Movie extends Component {
   componentWillMount() {
-    this.props.fetchMovies();
+    console.log( 'test' );
+    this.props.fetchMovies( this.props.params.movieId );
   }
 
-  renderMovies() {
+  render() {
     if ( this.props.error ) {
       return <p>An error has occurred! Is this server running? (see README)</p>;
     }
@@ -16,34 +16,25 @@ class Movies extends Component {
       return <p>Loading...</p>;
     }
     else if ( this.props.fetched && !this.props.movies.length ) {
-      return <p>No movies to show!</p>;
+      return <p>Movie not found!</p>;
     }
     else if ( this.props.fetched ) {
-      return this.props.movies.map( movie => {
-        return (
+      let movie = this.props.movies[0];
+
+      return (
+        <div>
           <MovieCard
             key={movie._id}
             title={movie.title}
             rating={movie.rating}
             posterUrl={movie.posterUrl}
-            slug={movie.slug}
           />
-        );
-      });
+        </div>
+      );
     }
 
     return <p>An error has occurred.</p>;
   }
-
-  render() {
-    return (
-      <div>
-        <div className="movie-card-container">
-          {this.renderMovies()}
-        </div>
-      </div>
-    );
-  }
 }
 
-export default Movies;
+export default Movie;
