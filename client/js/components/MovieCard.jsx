@@ -7,7 +7,7 @@ class MovieCard extends Component {
   render() {
     return (
       <Link to={`/m/${this.props.slug}`}>
-        <div className="movie-card">
+        <div className="movie-card" key={this.props.key}>
           <div className="movie-card-backdrop" />
           <div className="movie-card-image">
             <img src={this.props.posterUrl} role="presentation" />

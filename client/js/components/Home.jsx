@@ -13,7 +13,7 @@ class Home extends Component {
           <small>Movie Listings</small>
           <Link to="add-movie">
             <Button
-              className="btn btn-success pull-right"
+              bsStyle="success pull-right"
               type="button"
             >
               Add Movie

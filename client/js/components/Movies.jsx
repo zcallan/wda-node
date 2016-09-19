@@ -10,7 +10,7 @@ class Movies extends Component {
 
   renderMovies() {
     if ( this.props.error ) {
-      return <p>An error has occurred! Is this server running? (see README)</p>;
+      return <p>An error has occurred! Server or database may be down. Devs check console.</p>;
     }
     else if ( this.props.fetching ) {
       return <p>Loading...</p>;

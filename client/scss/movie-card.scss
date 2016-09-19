@@ -58,5 +58,19 @@
     font-weight: bold;
     font-size: 16px;
     transition: opacity .2s ease;
+    
+    p {
+      text-decoration: none;
+    }
+  }
+}
+
+.movie {
+  display: flex;
+
+  img {
+    width: 200px;
+    height: 300px;
+    margin-right: 20px;
   }
 }

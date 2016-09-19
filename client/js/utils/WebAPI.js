@@ -13,3 +13,7 @@ export function postMovie( movie ) {
   console.log( movie );
   return axios.post( 'http://localhost:3001/api/movies', movie );
 }
+
+export function putMovie( movie ) {
+  return axios.put( 'http://localhost:3001/api/movies', movie );
+}

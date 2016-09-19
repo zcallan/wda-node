@@ -20,17 +20,27 @@ class FormAddMovie extends Component {
       >
         <Field model="movie.title">
           <label>Title</label>
-          <input type="text" />
+          <input type="text" placeholder="Movie Title" required />
+        </Field>
+
+        <Field model="movie.description">
+          <label>Description</label>
+          <textarea rows="2" placeholder="About the movie..." required />
         </Field>
 
         <Field model="movie.rating">
-          <label>Rating</label>
-          <input type="text" />
+          <label>Rating (out of 10)</label>
+          <input type="text" placeholder="7.5" required />
+        </Field>
+
+        <Field model="movie.actors">
+          <label>Actors (separate actors with a comma)</label>
+          <input type="text" placeholder="Actor 1,Actor 2" required />
         </Field>
 
         <Field model="movie.posterUrl">
           <label>Poster URL</label>
-          <input type="text" />
+          <input type="text" placeholder="http://example.com/image.png" required />
         </Field>
 
         <Button

@@ -13,3 +13,9 @@ export const addMovie = createAction( 'ADD_MOVIE', movie => {
     promise: postMovie( movie ),
   };
 });
+
+export const addComment = createAction( 'ADD_MOVIE', comment => {
+  return {
+    promise: putMovie( comment ),
+  };
+});

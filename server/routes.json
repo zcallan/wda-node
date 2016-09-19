@@ -28,5 +28,10 @@
     "method": "get",
     "path": "/api/blogs",
     "controller": "./routes/api/get/blogs.js"
+  },
+  {
+    "method": "put",
+    "path": "/api/movies",
+    "controller": "./routes/api/put/movies.js"
   }
 ]
