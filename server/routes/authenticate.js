@@ -5,7 +5,7 @@ let config = require( '../../../../config' );
 
 module.exports = function( req, res ) {
   Users.findOne( {
-    name: req.body.username
+    name: req.body.username || ''
   }, ( err, user ) => {
     if ( err ) throw err;
 

@@ -1,46 +1,26 @@
 import '../../scss/movie-card.scss';
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
-import FormAddComment from './forms/FormAddComment.jsx';
+import { Button, PageHeader } from 'react-bootstrap';
+import FormAddComment from '../containers/formAddCommentContainer';
+import Comment from './Comment.jsx';
 
 
 class Movie extends Component {
-  constructor() {
-    super();
-    this.showCommentForm = this.showCommentForm.bind( this );
-  }
-
   componentWillMount() {
     this.props.fetchMovies( this.props.params.movieId );
-
-    this.setState({
-      addingComment: false,
-    });
   }
 
   renderComments() {
-    if ( this.props.fetched && !this.props.movies[0].comments.length ) {
-      return <p>No comments yet.</p>;
-    }
-    else if ( this.props.fetched ) {
+    if ( this.props.fetched ) {
+      if ( !this.props.movies[0].comments.length ) {
+        return <p>No comments yet.</p>;
+      }
+
       return this.props.movies[0].comments.map( comment => {
-        return (
-          <div key={comment._id}>
-            <h4>{comment.title}</h4>
-            <p>{comment.message}</p>
-          </div>
-        );
+        return <Comment comment={comment} />;
       });
     }
     return <p>An error has occurred.</p>;
-  }
-
-  showCommentForm() {
-    let current = this.state.addingComment;
-
-    this.setState({
-      addingComment: !current,
-    })
   }
 
   render() {
@@ -58,6 +38,7 @@ class Movie extends Component {
 
       return (
         <div>
+          <PageHeader>$ ls ~/m/{movie.slug}</PageHeader>
           <div className="movie">
             <img src={movie.posterUrl} role="presentation" />
             <div>
@@ -70,10 +51,7 @@ class Movie extends Component {
               <p>{movie.description}</p>
 
               <h4>Actors</h4>
-              <p>{movie.actors.map( ( actor, i ) => {
-                if ( i > 0 ) actor = ', ' + actor;
-                return actor;
-              })}</p>
+              <p>{movie.actors.map( ( actor, i ) => i ? `, ${actor}` : actor ) }</p>
             </div>
           </div>
 
@@ -82,13 +60,11 @@ class Movie extends Component {
           <div>
             <h2>Comments</h2>
             {this.renderComments()}
-            <Button
-              bsStyle="success"
-              onClick={this.showCommentForm}
-            >
-              Add Comment
-            </Button>
-            <FormAddComment display={this.state.addingComment} />
+            <hr />
+            <FormAddComment
+              commentType="movie"
+              contentId={movie._id}
+            />
           </div>
         </div>
       );

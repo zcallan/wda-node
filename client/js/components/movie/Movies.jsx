@@ -19,10 +19,10 @@ class Movies extends Component {
       return <p>No movies to show!</p>;
     }
     else if ( this.props.fetched ) {
-      return this.props.movies.map( movie => {
+      return this.props.movies.map( ( movie, i ) => {
         return (
           <MovieCard
-            key={movie._id}
+            key={i}
             title={movie.title}
             rating={movie.rating}
             posterUrl={movie.posterUrl}

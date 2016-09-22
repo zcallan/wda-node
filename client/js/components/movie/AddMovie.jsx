@@ -7,7 +7,7 @@ class AddMovie extends Component {
   render() {
     return (
       <div>
-        <PageHeader>Add Movie</PageHeader>
+        <PageHeader>$ ls ~/add-movie</PageHeader>
         <FormAddMovie />
       </div>
     );
