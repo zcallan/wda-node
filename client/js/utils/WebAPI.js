@@ -1,19 +1,38 @@
 import axios from 'axios';
 
-export function getBlogs() {
-  return axios.get( 'http://localhost:3001/api/blogs' );
+var apiCall = axios.create({
+  baseURL: 'http://localhost:3001/',
+  // timeout: 1000,
+  // auth: {
+  //   username: 'callan',
+  //   password: 'password'
+  // },
+});
+
+export function getBlogs( blog ) {
+  return apiCall.get( `api/blogs/${blog || ''}`, { auth: { username: 'callan', password: 'password' } } );
 }
 
 export function getMovies( movie ) {
-  let movieId = ( movie ) ? `/${movie}` : '';
-  return axios.get( 'http://localhost:3001/api/movies' + movieId );
+  return apiCall.get( `api/movies/${movie || ''}`, { auth: { username: 'callan', password: 'password' } } );
 }
 
 export function postMovie( movie ) {
-  console.log( movie );
-  return axios.post( 'http://localhost:3001/api/movies', movie );
+  return apiCall.post( 'api/movies', movie );
+}
+
+export function postBlog( blog ) {
+  return apiCall.post( 'api/blogs', blog );
 }
 
 export function putMovie( movie ) {
-  return axios.put( 'http://localhost:3001/api/movies', movie );
+  return apiCall.put( 'api/movies', movie );
+}
+
+export function putBlog( blog ) {
+  return apiCall.put( 'api/blogs', blog );
+}
+
+export function login() {
+  return axios.post( 'users', { auth: { username: 'callan', password: 'password' } } );
 }

@@ -8,12 +8,12 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <PageHeader>Home</PageHeader>
         <PageHeader>
-          <small>Movie Listings</small>
+          $ ls ~
           <Link to="add-movie">
             <Button
-              bsStyle="success pull-right"
+              bsStyle="success"
+              className="pull-right"
               type="button"
             >
               Add Movie

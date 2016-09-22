@@ -1,54 +1,114 @@
 import React, { Component } from 'react';
-import { Field, Form } from 'react-redux-form';
-import { Button } from 'react-bootstrap';
+import { Button, FormGroup, FormControl, Col, Panel, ControlLabel } from 'react-bootstrap';
 
 class FormAddComment extends Component {
-  constructor() {
-    super();
-    this.changeTitle = this.changeTitle.bind( this );
-    this.changeComment = this.changeComment.bind( this );
-  }
-
   componentWillMount() {
     this.setState({
+      commentUsername: '',
       commentTitle: '',
       commentMessage: '',
+      commentUsernameValidation: '',
+      commentTitleValidation: '',
+      commentMessageValidation: '',
     });
   }
-  changeTitle( event ) {
-    console.log( event );
+
+  changeUsername( event ) {
+    let valid = ( !event.target.value ) ? 'warning' : '';
     this.setState({
-      commentTitle: '',
+      commentUsername: event.target.value,
+      commentUsernameValidation: valid,
+    })
+  }
+
+  changeTitle( event ) {
+    let valid = ( !event.target.value ) ? 'warning' : '';
+    this.setState({
+      commentTitle: event.target.value,
+      commentTitleValidation: valid,
     })
   }
 
   changeComment( event ) {
-    console.log( event );
+    let valid = ( !event.target.value ) ? 'warning' : '';
     this.setState({
-      commentMessage: '',
+      commentMessage: event.target.value,
+      commentMessageValidation: valid,
     })
   }
 
   handleSubmit() {
-    console.log( 'test ');
-    /* POST data to database. */
-    // this.props.addComment( null );
+    let valid = true;
+    if ( !this.state.commentUsername ) {
+      this.setState( { commentUsernameValidation: 'error' } );
+      valid = false;
+    }
+    if ( !this.state.commentTitle ) {
+      this.setState( { commentTitleValidation: 'error' } );
+      valid = false;
+    }
+    if ( !this.state.commentMessage ) {
+      this.setState( { commentMessageValidation: 'error' } );
+      valid = false;
+    }
+    if ( valid ) {
+      this.props.addComment({
+        username: this.state.commentUsername,
+        title: this.state.commentTitle,
+        message: this.state.commentMessage,
+        _id: this.props.contentId,
+        type: this.props.commentType,
+      });
+    }
   }
 
   render() {
-    return ( this.props.display ) ? (
-      <form>
-        <input type="text" placeholder="Title" name="title" required onChange={this.changeTitle} />
-        <input type="text" placeholder="Comment" name="comment" required onChange={this.changeComment} />
-        <Button
-          type="button"
-          bsStyle="success"
-          onClick={this.handleSubmit}
-        >
-          Submit
-        </Button>
-      </form>
-    ) : <div />;
+    return (
+      <Col sm={4}>
+        <Panel>
+          <form>
+            <FormGroup validationState={this.state.commentUsernameValidation}>
+              <ControlLabel>Username</ControlLabel>
+              <FormControl
+                type="text"
+                value={this.state.commentUsername}
+                placeholder="Username"
+                onChange={::this.changeUsername}
+              />
+            </FormGroup>
+
+            <FormGroup validationState={this.state.commentTitleValidation}>
+              <ControlLabel>Title</ControlLabel>
+              <FormControl
+                type="text"
+                value={this.state.commentTitle}
+                placeholder="Title"
+                onChange={::this.changeTitle}
+              />
+            </FormGroup>
+
+            <FormGroup validationState={this.state.commentMessageValidation}>
+              <ControlLabel>Message</ControlLabel>
+              <FormControl
+                componentClass="textarea"
+                value={this.state.commentMessage}
+                placeholder="Message"
+                onChange={::this.changeComment}
+              />
+            </FormGroup>
+
+            <Button
+               type="button"
+               bsStyle="success"
+               onClick={::this.handleSubmit}
+               className="pull-right"
+            >
+              Add Comment
+            </Button>
+          </form>
+        </Panel>
+      </Col>
+    );
   }
 }
 

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Movies from '../components/Movies.jsx';
+import Movies from '../components/movie/Movies.jsx';
 import { fetchMovies } from '../actions/movieActions';
 
 

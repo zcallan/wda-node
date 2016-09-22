@@ -1,37 +1,7 @@
 [
   {
     "method": "post",
-    "path": "/api/authenticate",
-    "controller": "./routes/api/post/authenticate.js"
-  },
-  {
-    "method": "post",
-    "path": "/api/movies",
-    "controller": "./routes/api/post/movies.js"
-  },
-  {
-    "method": "post",
-    "path": "/api/blogs",
-    "controller": "./routes/api/post/blogs.js"
-  },
-  {
-    "method": "get",
-    "path": "/api/movies",
-    "controller": "./routes/api/get/movies.js"
-  },
-  {
-    "method": "get",
-    "path": "/api/movies/:movieId",
-    "controller": "./routes/api/get/movies.js"
-  },
-  {
-    "method": "get",
-    "path": "/api/blogs",
-    "controller": "./routes/api/get/blogs.js"
-  },
-  {
-    "method": "put",
-    "path": "/api/movies",
-    "controller": "./routes/api/put/movies.js"
+    "path": "/users",
+    "controller": "./routes/api/post/users.js"
   }
 ]

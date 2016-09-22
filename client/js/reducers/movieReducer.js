@@ -2,7 +2,6 @@ const initialState = {
   fetching: false,
   fetched: false,
   movies: [],
-  selected: null,
   error: null,
 };
 

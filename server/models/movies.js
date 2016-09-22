@@ -6,6 +6,10 @@ let Schema = mongoose.Schema;
 
 /* Generate a comments schema so movie comments each have their own unique ID. */
 let CommentSchema = new Schema({
+  username: {
+    type: String,
+    required: [ true, 'Comment username required!' ],
+  },
   title: {
     type: String,
     required: [ true, 'Comment title required!' ],

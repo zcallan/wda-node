@@ -11,12 +11,15 @@ export default function App( { children } ) {
           <Navbar.Brand>
             <Link to="/">Mavericks Inc.</Link>
           </Navbar.Brand>
+          <Navbar.Toggle />
         </Navbar.Header>
-        <Nav>
-          <NavItem componentClass={Link} href="/" to="/">Home</NavItem>
-          <NavItem componentClass={Link} href="blogs" to="blogs">Blogs</NavItem>
-          <NavItem componentClass={Link} href="about" to="about">About</NavItem>
-        </Nav>
+        <Navbar.Collapse>
+          <Nav>
+            <NavItem componentClass={Link} href="/" to="/">Home</NavItem>
+            <NavItem componentClass={Link} href="blogs" to="blogs">Blogs</NavItem>
+            <NavItem componentClass={Link} href="about" to="about">About</NavItem>
+          </Nav>
+        </Navbar.Collapse>
       </Navbar>
       <Col sm={12}>
         <div>{children}</div>

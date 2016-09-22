@@ -2,10 +2,10 @@ const webpack = require('webpack');
 
 module.exports = {
   devServer: {
+    historyApiFallback: true,
     inline: true,
     contentBase: './build',
     port: 3000,
-    historyApiFallback: true,
   },
   devtool: 'cheap-module-eval-source-map',
   entry: './client/js/Root.jsx',

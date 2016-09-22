@@ -1,0 +1,47 @@
+[
+  {
+    "method": "post",
+    "path": "/movies",
+    "controller": "./routes/api/post/movies.js"
+  },
+  {
+    "method": "post",
+    "path": "/blogs",
+    "controller": "./routes/api/post/blogs.js"
+  },
+  {
+    "method": "get",
+    "path": "/movies",
+    "controller": "./routes/api/get/movies.js"
+  },
+  {
+    "method": "get",
+    "path": "/movies/:movieId",
+    "controller": "./routes/api/get/movies.js"
+  },
+  {
+    "method": "get",
+    "path": "/blogs",
+    "controller": "./routes/api/get/blogs.js"
+  },
+  {
+    "method": "get",
+    "path": "/blogs/:blogId",
+    "controller": "./routes/api/get/blogs.js"
+  },
+  {
+    "method": "get",
+    "path": "/users",
+    "controller": "./routes/api/get/users.js"
+  },
+  {
+    "method": "put",
+    "path": "/movies",
+    "controller": "./routes/api/put/movies.js"
+  },
+  {
+    "method": "put",
+    "path": "/blogs",
+    "controller": "./routes/api/put/blogs.js"
+  }
+]

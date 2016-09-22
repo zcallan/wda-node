@@ -5,9 +5,7 @@ import { addMovie } from '../actions/movieActions';
 
 
 function mapStateToProps( state ) {
-  return {
-    movie: state.movie,
-  };
+  return {};
 }
 
 function mapDispatchToProps( dispatch ) {

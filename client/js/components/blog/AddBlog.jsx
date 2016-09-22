@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { PageHeader } from 'react-bootstrap';
-import FormAddBlog from '../components/forms/FormAddBlog.jsx';
+import FormAddBlog from '../forms/FormAddBlog.jsx';
 
 
 class AddBlog extends Component {

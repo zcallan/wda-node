@@ -5,12 +5,14 @@ let Movies = require( '../../../models/movies');
 module.exports = function( req, res, next ) {
   if ( !req.body._id ) {
     res.send( 'Error: Movie ID to insert comment into is missing.' );
-    next();
+    console.log( 'ID missing!' );
+    return next();
   }
   Movies.findByIdAndUpdate(
     req.body._id, {
       $push: {
         "comments": {
+          username: req.body.username,
           title: req.body.title,
           message: req.body.message
         }

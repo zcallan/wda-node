@@ -1,8 +1,8 @@
-import '../../scss/movie-card.scss';
+import '../../../scss/movie-card.scss';
 import React, { Component } from 'react';
 import { Button, Jumbotron, PageHeader } from 'react-bootstrap';
-import FormAddComment from '../containers/formAddCommentContainer';
-import Comment from './Comment.jsx';
+import FormAddComment from '../../containers/formAddCommentContainer';
+import Comment from '../Comment.jsx';
 
 
 class Blog extends Component {

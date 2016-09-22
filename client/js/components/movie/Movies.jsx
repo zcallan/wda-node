@@ -1,4 +1,4 @@
-import '../../scss/movies.scss';
+import '../../../scss/movies.scss';
 import React, { Component } from 'react';
 import MovieCard from './MovieCard.jsx';
 

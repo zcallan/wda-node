@@ -1,16 +1,15 @@
 import { createAction } from 'redux-actions';
-import { getBlogs } from '../utils/WebAPI';
+import { getBlogs, postBlog } from '../utils/WebAPI';
 
 
-export function selectBlog( blog ) {
+export const addBlog = createAction( 'ADD_BLOG', blog => {
   return {
-    type: 'SELECT_BLOG',
-    payload: blog,
+    promise: postBlog( blog ),
   };
-}
+});
 
-export const fetchBlogs = createAction( 'FETCH_BLOGS', () => {
+export const fetchBlogs = createAction( 'FETCH_BLOGS', ( blogId = null ) => {
   return {
-    promise: getBlogs(),
+    promise: getBlogs( blogId ),
   };
 });

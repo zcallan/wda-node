@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Blogs from '../components/Blogs.jsx';
+import Blogs from '../components/blog/Blogs.jsx';
 import { fetchBlogs } from '../actions/blogActions';
 
 

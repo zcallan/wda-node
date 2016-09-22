@@ -2,7 +2,6 @@ const initialState = {
   fetching: false,
   fetched: false,
   blogs: [],
-  selected: null,
   error: null,
 };
 
@@ -31,12 +30,6 @@ export default function blogs( state = initialState, action ) {
         fetching: false,
         fetched: false,
         error: action.payload,
-      };
-
-    case 'SELECT_BLOGS':
-      return {
-        ...state,
-        selected: action.payload,
       };
 
     default:

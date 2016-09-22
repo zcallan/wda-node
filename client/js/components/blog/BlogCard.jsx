@@ -1,4 +1,4 @@
-import '../../scss/blog-card.scss';
+import '../../../scss/blog-card.scss';
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import TextTruncate from 'react-text-truncate';
