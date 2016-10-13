@@ -5,7 +5,8 @@
   "scripts": {
     "build": "webpack",
     "start": "webpack-dev-server",
-    "server": "nodemon server/server.js"
+    "dev-server": "nodemon server/server.js",
+    "server": "node server/server.js"
   },
   "license": "ISC",
   "dependencies": {

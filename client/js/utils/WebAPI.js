@@ -1,12 +1,11 @@
 import axios from 'axios';
-// import authentication from '../reducers/authenticationReducer';
 
 
 class WebAPI {
   constructor() {
     this.apiCall = axios.create({
-      baseURL: 'http://localhost:3001/api/',
-      // baseURL: 'http://kaln.io:3001/',
+      // baseURL: 'http://localhost:3001/api/',
+      baseURL: 'http://kaln.io:3001/',
       // timeout: 1000,
     });
   }
