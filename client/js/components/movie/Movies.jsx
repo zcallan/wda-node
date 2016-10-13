@@ -11,7 +11,8 @@ class Movies extends Component {
   renderMovies() {
     if ( this.props.error ) {
       if ( !this.props.error.response.data.success) {
-        this.context.router.push( '/login' );
+        return <p>You must be logged in to view this page.</p>;
+        // this.context.router.push( '/login' );
       }
       return <p>An error has occurred! Check console.</p>;
     }

@@ -1,11 +1,12 @@
 import axios from 'axios';
+import config from '../../../config';
 
 
 class WebAPI {
   constructor() {
     this.apiCall = axios.create({
       // baseURL: 'http://localhost:3001/api/',
-      baseURL: 'http://kaln.io:3001/',
+      baseURL: config.serverUrl,
       // timeout: 1000,
     });
   }
@@ -19,31 +20,31 @@ class WebAPI {
   }
 
   getBlogs( blog ) {
-    return this.apiCall.get( `blogs/${blog || ''}` );
+    return this.apiCall.get( `api/blogs/${blog || ''}` );
   }
 
   getMovies( movie ) {
-    return this.apiCall.get( `movies/${movie || ''}` );
+    return this.apiCall.get( `api/movies/${movie || ''}` );
   }
 
   postMovie( movie ) {
-    return this.apiCall.post( 'movies', movie );
+    return this.apiCall.post( 'api/movies', movie );
   }
 
   postBlog( blog ) {
-    return this.apiCall.post( 'blogs', blog );
+    return this.apiCall.post( 'api/blogs', blog );
   }
 
   putMovie( movie ) {
-    return this.apiCall.put( 'movies', movie );
+    return this.apiCall.put( 'api/movies', movie );
   }
 
   putBlog( blog ) {
-    return this.apiCall.put( 'blogs', blog );
+    return this.apiCall.put( 'api/blogs', blog );
   }
 
   login( user ) {
-    return axios.post( 'http://localhost:3001/authenticate', user );
+    return this.apiCall.post( 'authenticate', user );
   }
 
   logout() {
@@ -51,7 +52,7 @@ class WebAPI {
   }
 
   register( user ) {
-    return axios.post( 'http://localhost:3001/register', user );
+    return this.apiCall.post( 'register', user );
   }
 }
 
