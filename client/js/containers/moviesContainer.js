@@ -10,6 +10,7 @@ function mapStateToProps( state ) {
     error: state.promiseMovies.error,
     fetching: state.promiseMovies.fetching,
     fetched: state.promiseMovies.fetched,
+    authentication: state.authentication
   };
 }
 

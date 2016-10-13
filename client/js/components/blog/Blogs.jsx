@@ -11,7 +11,10 @@ class Blogs extends Component {
 
   renderBlogs() {
     if ( this.props.error ) {
-      return <p>An error has occurred! Is this server running? (see README)</p>;
+      if ( !this.props.error.response.data.success) {
+        this.context.router.push( '/login' );
+      }
+      return <p>An error has occurred! Check console.</p>;
     }
     else if ( !this.props.blogs.length ) {
       return <p>No blogs to show!</p>;
@@ -52,5 +55,9 @@ class Blogs extends Component {
     );
   }
 }
+
+Blogs.contextTypes = {
+  router: React.PropTypes.object,
+};
 
 export default Blogs;

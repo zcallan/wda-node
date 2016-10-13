@@ -1,15 +1,15 @@
 import { createAction } from 'redux-actions';
-import { getMovies, postMovie } from '../utils/WebAPI';
+import WebAPI from '../utils/WebAPI';
 
 
 export const fetchMovies = createAction( 'FETCH_MOVIES', ( movieId = null ) => {
   return {
-    promise: getMovies( movieId ),
+    promise: WebAPI.getMovies( movieId ),
   };
 });
 
 export const addMovie = createAction( 'ADD_MOVIE', movie => {
   return {
-    promise: postMovie( movie ),
+    promise: WebAPI.postMovie( movie ),
   };
 });

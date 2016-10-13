@@ -4,23 +4,49 @@ let cors = require( 'cors' );
 let bodyParser = require( 'body-parser' );
 let morgan = require( 'morgan' );
 let mongoose = require( 'mongoose' );
-// let passport = require( 'passport' );
 let config = require( '../config' );
 let routes = require( './routes.json' );
 let api = require( './api-routes.json' );
-// let Users = require( './models/users' );
-// let jwt = require( 'jwt-simple' );
+let Users = require( './models/users' );
+let jwt = require( 'jsonwebtoken' );
 
 let app = express();
 let apiRoutes = express.Router();
-// passportConfig( passport );
 
 
 /* Middleware for Cross-Origin calls, posting forms and dev console logs. */
 app.use( cors() );
-app.use( bodyParser.urlencoded( { extended: true } ) );
+app.use( bodyParser.urlencoded( { extended: false } ) );
 app.use( bodyParser.json() );
 app.use( morgan( 'dev' ) );
+
+app.set( 'apiSecret', config.secret );
+
+
+apiRoutes.use( ( req, res, next ) => {
+  let token = req.body.token || req.query.token || req.headers['x-access-token'];
+
+  console.log( 'authenticating' );
+  if ( token ) {
+    jwt.verify( token, app.get( 'apiSecret' ), ( err, decoded ) => {
+      if ( err ) {
+        res.status( 403 ).json({
+          success: false,
+          message: 'Failed to authenticate token.'
+        })
+      } else {
+        console.log( 'authenticated!' );
+        req.decoded = decoded;
+        next();
+      }
+    });
+  } else{
+    return res.status( 403 ).send({
+      success: false,
+      message: 'No token provided.'
+    })
+  }
+});
 
 
 /* General routes. */
@@ -35,6 +61,65 @@ api.map( route => {
 /* Prefix API routes with /api. */
 app.use( '/api', apiRoutes );
 
+
+app.get( '/api', ( req, res, next ) => {
+  res.send( 'Hello!' );
+});
+
+app.get( '/setup', ( req, res, next ) => {
+  let Callan = new Users({
+    username: 'c',
+    password: 'password',
+    admin: true
+  });
+
+  Callan.save( err => {
+    if ( err ) throw err;
+
+    console.log( Callan.username + ' saved successfully!' );
+    res.json( { success: true } );
+  });
+});
+
+
+app.post( '/authenticate', ( req, res, next ) => {
+  Users.findOne({
+    username: req.body.username
+  }, ( err, user ) => {
+    if ( err ) throw err;
+
+    if ( !user ) {
+      res.json({
+        success: false,
+        message: 'Authentication failed. User not found.'
+      })
+    } else {
+      if ( user.password != req.body.password ) {
+        res.json({
+          success: false,
+          message: 'Authentication failed. Password does not match.'
+        });
+      } else {
+
+        let payload = {};
+        payload[user.username] = user.password;
+        let token = jwt.sign( payload, app.get( 'apiSecret' ) );
+
+        res.send({
+          success: true,
+          message: 'Authentication successful!',
+          token
+        })
+      }
+    }
+  });
+});
+
+app.post( '/login', ( req, res, next ) => {
+  res.json({
+    loggingIn: true
+  });
+});
 
 /* Startup the server with the mongo database. */
 mongoose.connect( config.database, () => {

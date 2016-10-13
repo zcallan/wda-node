@@ -3,6 +3,7 @@ let mongoose = require( 'mongoose' );
 let Schema = mongoose.Schema;
 let bcrypt = require( 'bcrypt-nodejs' );
 
+
 var UsersSchema = new Schema({
   username: {
     type: String,
@@ -12,9 +13,14 @@ var UsersSchema = new Schema({
   password: {
     type: String,
     required: true
+  },
+  admin: {
+    type: Boolean,
+    requried: true
   }
 });
 
+/*
 // Execute before each user.save() call
 UsersSchema.pre( 'save', function( callback ) {
   var user = this;
@@ -39,6 +45,6 @@ UsersSchema.methods.verifyPassword = function( password, cb ) {
     if ( err ) return cb( err );
     cb( null, isMatch );
   });
-};
+};*/
 
 module.exports = mongoose.model( 'Users', UsersSchema );

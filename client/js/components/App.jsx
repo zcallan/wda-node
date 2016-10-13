@@ -1,6 +1,7 @@
 import React from 'react';
 import { Nav, Navbar, NavItem, Col } from 'react-bootstrap';
 import { Link } from 'react-router';
+import ButtonLoginLogout from '../containers/buttonLoginLogoutContainer';
 
 
 export default function App( { children } ) {
@@ -18,6 +19,7 @@ export default function App( { children } ) {
             <NavItem componentClass={Link} href="/" to="/">Home</NavItem>
             <NavItem componentClass={Link} href="blogs" to="blogs">Blogs</NavItem>
             <NavItem componentClass={Link} href="about" to="about">About</NavItem>
+            <ButtonLoginLogout />
           </Nav>
         </Navbar.Collapse>
       </Navbar>

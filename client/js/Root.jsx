@@ -28,6 +28,7 @@ ReactDOM.render(
         <Route path="add-blog" component={AddBlog} />
         <Route path="m/:movieId" component={Movie} />
         <Route path="b/:blogId" component={Blog} />
+        <Route path="login" component={Login} />
       </Route>
     </Router>
   </Provider>,

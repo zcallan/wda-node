@@ -10,7 +10,10 @@ class Movies extends Component {
 
   renderMovies() {
     if ( this.props.error ) {
-      return <p>An error has occurred! Server or database may be down. Devs check console.</p>;
+      if ( !this.props.error.response.data.success) {
+        this.context.router.push( '/login' );
+      }
+      return <p>An error has occurred! Check console.</p>;
     }
     else if ( this.props.fetching ) {
       return <p>Loading...</p>;
@@ -45,5 +48,9 @@ class Movies extends Component {
     );
   }
 }
+
+Movies.contextTypes = {
+  router: React.PropTypes.object,
+};
 
 export default Movies;
