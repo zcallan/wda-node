@@ -4,21 +4,11 @@ import { Button, FormGroup, FormControl, Col, Panel, ControlLabel } from 'react-
 class FormAddComment extends Component {
   componentWillMount() {
     this.setState({
-      commentUsername: '',
       commentTitle: '',
       commentMessage: '',
-      commentUsernameValidation: '',
       commentTitleValidation: '',
       commentMessageValidation: '',
     });
-  }
-
-  changeUsername( event ) {
-    let valid = ( !event.target.value ) ? 'warning' : '';
-    this.setState({
-      commentUsername: event.target.value,
-      commentUsernameValidation: valid,
-    })
   }
 
   changeTitle( event ) {
@@ -39,10 +29,6 @@ class FormAddComment extends Component {
 
   handleSubmit() {
     let valid = true;
-    if ( !this.state.commentUsername ) {
-      this.setState( { commentUsernameValidation: 'error' } );
-      valid = false;
-    }
     if ( !this.state.commentTitle ) {
       this.setState( { commentTitleValidation: 'error' } );
       valid = false;
@@ -53,11 +39,17 @@ class FormAddComment extends Component {
     }
     if ( valid ) {
       this.props.addComment({
-        username: this.state.commentUsername,
+        username: this.props.username,
         title: this.state.commentTitle,
         message: this.state.commentMessage,
         _id: this.props.contentId,
         type: this.props.commentType,
+      }).then( () => {
+        if ( this.props.commentType == 'movie' ) {
+          this.props.fetchMovies( this.props.movieSlug );
+        } else {
+          this.props.fetchBlogs( this.props.blogSlug );
+        }
       });
     }
   }
@@ -67,16 +59,6 @@ class FormAddComment extends Component {
       <Col sm={4}>
         <Panel>
           <form>
-            <FormGroup validationState={this.state.commentUsernameValidation}>
-              <ControlLabel>Username</ControlLabel>
-              <FormControl
-                type="text"
-                value={this.state.commentUsername}
-                placeholder="Username"
-                onChange={::this.changeUsername}
-              />
-            </FormGroup>
-
             <FormGroup validationState={this.state.commentTitleValidation}>
               <ControlLabel>Title</ControlLabel>
               <FormControl

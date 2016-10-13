@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { PageHeader } from 'react-bootstrap';
-import FormAddMovie from '../forms/FormAddMovie.jsx';
+import FormAddMovie from '../../containers/formAddMovieContainer';
 
 
 class AddMovie extends Component {

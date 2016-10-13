@@ -106,7 +106,8 @@ app.post( '/authenticate', ( req, res, next ) => {
         res.send({
           success: true,
           message: 'Authentication successful!',
-          token
+          token,
+          username: user.username
         })
       }
     }

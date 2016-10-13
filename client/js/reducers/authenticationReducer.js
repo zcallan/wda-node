@@ -2,6 +2,7 @@ const initialState = {
   authenticating: false,
   authenticated: false,
   token: '',
+  username: null,
   error: null,
 };
 
@@ -22,6 +23,7 @@ export default function authentication( state = initialState, action ) {
         authenticated: true,
         error: false,
         token: action.payload.data.token,
+        username: action.payload.data.username
       };
 
     case 'LOGIN_REJECTED':

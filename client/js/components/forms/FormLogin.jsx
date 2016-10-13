@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import { Button, FormGroup, FormControl, Col, Panel, ControlLabel } from 'react-bootstrap';
 import WebAPI from '../../utils/WebAPI';
 
-class FormAddBlog extends Component {
+class FormLogin extends Component {
   componentWillMount() {
     if ( this.props.authorized ) {
       this.context.router.push( '/' );
-
     }
 
     this.setState({
@@ -101,7 +100,7 @@ class FormAddBlog extends Component {
               onClick={::this.handleSubmit}
               className="pull-right"
             >
-              Add Blog
+              Login
             </Button>
           </form>
         </Panel>
@@ -110,8 +109,8 @@ class FormAddBlog extends Component {
   }
 }
 
-FormAddBlog.contextTypes = {
+FormLogin.contextTypes = {
   router: React.PropTypes.object,
 };
 
-export default FormAddBlog;
+export default FormLogin;

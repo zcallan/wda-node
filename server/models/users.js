@@ -16,7 +16,7 @@ var UsersSchema = new Schema({
   },
   admin: {
     type: Boolean,
-    requried: true
+    required: true
   }
 });
 
