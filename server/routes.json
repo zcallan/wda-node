@@ -1,7 +1,12 @@
 [
   {
     "method": "post",
-    "path": "/users",
-    "controller": "./routes/api/post/users.js"
+    "path": "/authenticate",
+    "controller": "./routes/authenticate.js"
+  },
+  {
+    "method": "post",
+    "path": "/register",
+    "controller": "./routes/register.js"
   }
 ]
