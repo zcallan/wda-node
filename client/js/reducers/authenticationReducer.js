@@ -6,8 +6,6 @@ const initialState = {
 };
 
 export default function authentication( state = initialState, action ) {
-  console.log( action.type );
-
   switch ( action.type ) {
     case 'LOGIN_PENDING':
       return {
@@ -35,7 +33,6 @@ export default function authentication( state = initialState, action ) {
       };
 
     case 'LOGOUT':
-      console.log( 'logging out' );
       return {
         ...state,
         authenticating: false,

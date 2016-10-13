@@ -13,3 +13,9 @@ export const logout = createAction( 'LOGOUT', () => {
     promise: WebAPI.logout(),
   };
 });
+
+export const register = createAction( 'REGISTER', user => {
+  return {
+    promise: WebAPI.register( user ),
+  };
+});

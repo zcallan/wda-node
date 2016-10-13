@@ -50,6 +50,10 @@ class WebAPI {
   logout() {
     return this.clearToken();
   }
+
+  register( user ) {
+    return axios.post( 'http://localhost:3001/register', user );
+  }
 }
 
 export default ( new WebAPI() );

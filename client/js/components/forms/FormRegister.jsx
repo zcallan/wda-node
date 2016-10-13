@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
 import { Button, FormGroup, FormControl, Col, Panel, ControlLabel } from 'react-bootstrap';
-import WebAPI from '../../utils/WebAPI';
 
-class FormAddBlog extends Component {
+class FormRegister extends Component {
   componentWillMount() {
     if ( this.props.authorized ) {
       this.context.router.push( '/' );
-
     }
 
     this.setState({
       username: '',
       usernameValidation: '',
       password: '',
-      passwordValidation: ''
+      passwordValidation: '',
+      registered: false
     });
   }
 
@@ -44,32 +43,32 @@ class FormAddBlog extends Component {
       valid = false;
     }
     if ( valid ) {
-      /* Call server method to create movie. */
-      console.log( 'logging in' );
-      this.props.login({
+      console.log( 'register' );
+      this.props.register({
         username: this.state.username,
         password: this.state.password,
       }).then( data => {
+        console.log( 'registering: ' );
+        console.log( data );
         let payload = data.action.payload;
 
         if ( payload.data.success ) {
-          let token = payload.data.token || '';
-          WebAPI.setToken( token );
-          console.log( 'logged in!' );
-          this.context.router.push( '/' );
+          this.setState( { registered: true } );
         } else {
           console.log( 'error: ' + payload.data.messsage );
           this.setState({
             usernameValidation: 'error',
             passwordValidation: 'error'
           });
-
         }
       });
     }
   }
 
   render() {
+    if ( this.state.registered ) {
+      return <h2>Registered!</h2>
+    }
     return (
       <Col sm={8} smOffset={2}>
         <Panel>
@@ -101,7 +100,7 @@ class FormAddBlog extends Component {
               onClick={::this.handleSubmit}
               className="pull-right"
             >
-              Add Blog
+              Register
             </Button>
           </form>
         </Panel>
@@ -110,8 +109,8 @@ class FormAddBlog extends Component {
   }
 }
 
-FormAddBlog.contextTypes = {
+FormRegister.contextTypes = {
   router: React.PropTypes.object,
 };
 
-export default FormAddBlog;
+export default FormRegister;

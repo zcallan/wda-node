@@ -26,7 +26,6 @@ app.set( 'apiSecret', config.secret );
 apiRoutes.use( ( req, res, next ) => {
   let token = req.body.token || req.query.token || req.headers['x-access-token'];
 
-  console.log( 'authenticating' );
   if ( token ) {
     jwt.verify( token, app.get( 'apiSecret' ), ( err, decoded ) => {
       if ( err ) {
@@ -35,12 +34,11 @@ apiRoutes.use( ( req, res, next ) => {
           message: 'Failed to authenticate token.'
         })
       } else {
-        console.log( 'authenticated!' );
         req.decoded = decoded;
         next();
       }
     });
-  } else{
+  } else {
     return res.status( 403 ).send({
       success: false,
       message: 'No token provided.'
@@ -66,17 +64,17 @@ app.get( '/api', ( req, res, next ) => {
   res.send( 'Hello!' );
 });
 
-app.get( '/setup', ( req, res, next ) => {
-  let Callan = new Users({
-    username: 'c',
-    password: 'password',
-    admin: true
+app.post( '/register', ( req, res, next ) => {
+  let user = new Users({
+    username: req.body.username,
+    password: req.body.password,
+    admin: false
   });
 
-  Callan.save( err => {
+  user.save( err => {
     if ( err ) throw err;
 
-    console.log( Callan.username + ' saved successfully!' );
+    console.log( user.username + ' saved successfully!' );
     res.json( { success: true } );
   });
 });

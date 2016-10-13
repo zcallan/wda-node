@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import FormLogin from '../components/forms/FormLogin.jsx';
 import { login } from '../actions/authenticationActions';
-// import { authentication } from '../reducers/authenticationReducer';
 
 
 function mapStateToProps( state ) {

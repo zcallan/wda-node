@@ -7,6 +7,7 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import App from './components/App.jsx';
 import About from './components/About.jsx';
 import Login from './components/Login.jsx';
+import Register from './components/Register.jsx';
 import Blogs from './containers/blogsContainer';
 import Home from './components/Home.jsx';
 import AddMovie from './components/movie/AddMovie.jsx';
@@ -28,7 +29,7 @@ ReactDOM.render(
         <Route path="add-blog" component={AddBlog} />
         <Route path="m/:movieId" component={Movie} />
         <Route path="b/:blogId" component={Blog} />
-        <Route path="login" component={Login} />
+        <Route path="register" component={Register} />
       </Route>
     </Router>
   </Provider>,
